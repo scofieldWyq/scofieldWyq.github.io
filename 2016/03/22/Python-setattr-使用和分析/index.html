@@ -1,61 +1,98 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
-  <title>Python setattr 使用和分析 | Hexo</title>
-  <meta name="author" content="John Doe">
-
-  
+  <title>Python setattr 使用和分析 | Scofield&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="setattr 讲解123456setattr(	object, name, value)# 参数就是一个对象，name是可能是现有的属性或者是一个可以新建的属性，value为该属性的值。## 这样，我们可以动态的生成属性# 记住，name 和 value 都是字符串值哦。
-setattr 实践  ">
+setattr 实践  代码来源  首先，去掉 第15行的注释运行,结果显示如下  123456$ python py_se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python setattr 使用和分析">
+<meta property="og:url" content="http://yoursite.com/2016/03/22/Python-setattr-使用和分析/index.html">
+<meta property="og:site_name" content="Scofield's Blog">
+<meta property="og:description" content="setattr 讲解123456setattr(	object, name, value)# 参数就是一个对象，name是可能是现有的属性或者是一个可以新建的属性，value为该属性的值。## 这样，我们可以动态的生成属性# 记住，name 和 value 都是字符串值哦。
+setattr 实践  代码来源  首先，去掉 第15行的注释运行,结果显示如下  123456$ python py_se">
+<meta property="og:updated_time" content="2016-05-16T06:03:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python setattr 使用和分析">
+<meta name="twitter:description" content="setattr 讲解123456setattr(	object, name, value)# 参数就是一个对象，name是可能是现有的属性或者是一个可以新建的属性，value为该属性的值。## 这样，我们可以动态的生成属性# 记住，name 和 value 都是字符串值哦。
+setattr 实践  代码来源  首先，去掉 第15行的注释运行,结果显示如下  123456$ python py_se">
   
+    <link rel="alternate" href="/atom.xml" title="Scofield&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
   
 
-  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-  
 </head>
 
 <body>
-  <header id="header" class="inner"><nav>
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-</nav></header>
-  <div id="content" class="inner"><article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Scofield&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">For Me</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python-setattr-使用和分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/22/Python-setattr-使用和分析/" class="article-date">
+  <time datetime="2016-03-22T02:13:33.000Z" itemprop="datePublished">2016-03-22</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title">Python setattr 使用和分析</h1>
+    <h1 class="article-title" itemprop="name">
+      Python setattr 使用和分析
+    </h1>
   
 
-    <time datetime="2016-03-22T02:13:33.000Z">
-  <span class="day">22</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="setattr-讲解"><a href="#setattr-讲解" class="headerlink" title="setattr 讲解"></a>setattr 讲解</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setattr(	object, name, value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数就是一个对象，name是可能是现有的属性或者是一个可以新建的属性，value为该属性的值。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 这样，我们可以动态的生成属性</span></span><br><span class="line"><span class="comment"># 记住，name 和 value 都是字符串值哦。</span></span><br></pre></td></tr></table></figure>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="setattr-讲解"><a href="#setattr-讲解" class="headerlink" title="setattr 讲解"></a>setattr 讲解</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setattr(	object, name, value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数就是一个对象，name是可能是现有的属性或者是一个可以新建的属性，value为该属性的值。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 这样，我们可以动态的生成属性</span></span><br><span class="line"><span class="comment"># 记住，name 和 value 都是字符串值哦。</span></span><br></pre></td></tr></table></figure>
 <h2 id="setattr-实践"><a href="#setattr-实践" class="headerlink" title="setattr 实践"></a>setattr 实践</h2><p>  <a href="https://raw.githubusercontent.com/scofieldWyq/wyqBlog/master/code/py_setattr.py" target="_blank" rel="external">代码来源</a><br>  首先，去掉 第15行的注释运行,结果显示如下<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python py_setattr.py</span><br><span class="line">attr4 exists?</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"py_setattr.py"</span>, line 15, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="built_in">print</span> T.attr4</span><br><span class="line">AttributeError: <span class="string">'test'</span> object has no attribute <span class="string">'attr4'</span></span><br></pre></td></tr></table></figure></p>
 <p>  再加上注释，运行<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ python py_setattr.py                        </span><br><span class="line">attr4 exists?</span><br><span class="line">create new attribute &lt;attr4&gt; <span class="built_in">test</span>4</span><br><span class="line">attribute &lt;attr3&gt;:<span class="built_in">test</span>3</span><br><span class="line">changed attribute &lt;attr3&gt; :<span class="built_in">test</span>3_changed</span><br></pre></td></tr></table></figure></p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
@@ -63,53 +100,138 @@ setattr 实践  ">
 <li><a href="http://www.tuicool.com/articles/YNV3QnR" target="_blank" rel="external">Python 类 setattr、getattr、hasattr 的使用</a></li>
 </ul>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/22/Python-setattr-使用和分析/" data-id="cio9ossyw001c263qxfbplc26" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/Python/">Python</a><a href="/tags/setattr/">setattr</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/setattr/">setattr</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
-</article></div>
-  <footer id="footer" class="inner"><div class="social alignright">
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/23/Python-字典/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python 字典
+        
+      </div>
+    </a>
   
   
+    <a href="/2016/03/16/Mysql-表内容的插入/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mysql 表内容的插入</div>
+    </a>
   
+</nav>
+
   
-  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
-</div>
-<p>
+</article>
+
+</section>
+        
+          <aside id="sidebar">
   
-  &copy; 2016 John Doe
+    
+
   
-</p>
-<div class="clearfix"></div></footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AFNetworking/">AFNetworking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CLLocationManager/">CLLocationManager</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Delegate/">Delegate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory/">Directory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory-operation/">Directory_operation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVC/">KVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVO/">KVO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Key-Value/">Key-Value</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Location/">Location</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMediaQuery/">MPMediaQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMusicPlayerController/">MPMusicPlayerController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Man/">Man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-c/">Objective-c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStoryboard/">UIStoryboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VIEW/">VIEW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio-player/">audio player</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/branch/">branch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/checkout/">checkout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/closedir/">closedir</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-line/">command line</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dictionary/">dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dirent/">dirent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fetch/">fetch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-attribute/">file attribute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyPath/">keyPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyword-k/">keyword -k</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/local/">local</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/login/">login</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge/">merge</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opendir/">opendir</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/readdir/">readdir</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seekdir/">seekdir</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setValue/">setValue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setattr/">setattr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stat/">stat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/str/">str</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/table/">table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/valueForKey/">valueForKey</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片外链/">图片外链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/外部链接/">外部链接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多值返回/">多值返回</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典/">字典</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/属性/">属性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据类型/">数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度网盘/">百度网盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类型判断/">类型判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视图/">视图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件下载/">软件下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/远程仓库/">远程仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值编码/">键值编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值观察/">键值观察</a></li></ul>
+    </div>
+  </div>
 
 
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/CLLocationManager/" style="font-size: 10px;">CLLocationManager</a> <a href="/tags/Delegate/" style="font-size: 10px;">Delegate</a> <a href="/tags/Directory/" style="font-size: 11.25px;">Directory</a> <a href="/tags/Directory-operation/" style="font-size: 10px;">Directory_operation</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/KVC/" style="font-size: 15px;">KVC</a> <a href="/tags/KVO/" style="font-size: 10px;">KVO</a> <a href="/tags/Key-Value/" style="font-size: 10px;">Key-Value</a> <a href="/tags/Linux/" style="font-size: 16.25px;">Linux</a> <a href="/tags/Location/" style="font-size: 10px;">Location</a> <a href="/tags/MPMediaQuery/" style="font-size: 10px;">MPMediaQuery</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/Mac/" style="font-size: 11.25px;">Mac</a> <a href="/tags/Man/" style="font-size: 10px;">Man</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/Mysql/" style="font-size: 18.75px;">Mysql</a> <a href="/tags/Objective-c/" style="font-size: 11.25px;">Objective-c</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/UIStoryboard/" style="font-size: 10px;">UIStoryboard</a> <a href="/tags/VIEW/" style="font-size: 10px;">VIEW</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/audio-player/" style="font-size: 10px;">audio player</a> <a href="/tags/branch/" style="font-size: 11.25px;">branch</a> <a href="/tags/checkout/" style="font-size: 10px;">checkout</a> <a href="/tags/closedir/" style="font-size: 10px;">closedir</a> <a href="/tags/command-line/" style="font-size: 10px;">command line</a> <a href="/tags/database/" style="font-size: 15px;">database</a> <a href="/tags/dict/" style="font-size: 12.5px;">dict</a> <a href="/tags/dictionary/" style="font-size: 12.5px;">dictionary</a> <a href="/tags/dirent/" style="font-size: 10px;">dirent</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/file-attribute/" style="font-size: 10px;">file attribute</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/install/" style="font-size: 11.25px;">install</a> <a href="/tags/keyPath/" style="font-size: 10px;">keyPath</a> <a href="/tags/keyword-k/" style="font-size: 10px;">keyword -k</a> <a href="/tags/local/" style="font-size: 10px;">local</a> <a href="/tags/login/" style="font-size: 10px;">login</a> <a href="/tags/merge/" style="font-size: 10px;">merge</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/opendir/" style="font-size: 10px;">opendir</a> <a href="/tags/readdir/" style="font-size: 10px;">readdir</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/seekdir/" style="font-size: 10px;">seekdir</a> <a href="/tags/setValue/" style="font-size: 10px;">setValue</a> <a href="/tags/setattr/" style="font-size: 10px;">setattr</a> <a href="/tags/stat/" style="font-size: 11.25px;">stat</a> <a href="/tags/str/" style="font-size: 10px;">str</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/struct/" style="font-size: 11.25px;">struct</a> <a href="/tags/table/" style="font-size: 10px;">table</a> <a href="/tags/valueForKey/" style="font-size: 10px;">valueForKey</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/图片外链/" style="font-size: 10px;">图片外链</a> <a href="/tags/外部链接/" style="font-size: 10px;">外部链接</a> <a href="/tags/多值返回/" style="font-size: 10px;">多值返回</a> <a href="/tags/字典/" style="font-size: 10px;">字典</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/数据库/" style="font-size: 13.75px;">数据库</a> <a href="/tags/数据类型/" style="font-size: 11.25px;">数据类型</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/百度网盘/" style="font-size: 10px;">百度网盘</a> <a href="/tags/类型判断/" style="font-size: 10px;">类型判断</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/软件下载/" style="font-size: 10px;">软件下载</a> <a href="/tags/远程仓库/" style="font-size: 10px;">远程仓库</a> <a href="/tags/键值编码/" style="font-size: 10px;">键值编码</a> <a href="/tags/键值观察/" style="font-size: 10px;">键值观察</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/24/CentOS-下Lamp环境的快速搭建/">CentOS 下Lamp环境的快速搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/24/Python-解析配置模块-ConfigParser/">Python 解析配置模块 ConfigParser</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/24/Python-字符串转换成字典/">Python 字符串转换成字典</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/24/Python-utf-8编码的16进制字符串转换成对应的文字/">Python utf-8编码的16进制字符串转换成对应的文字</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Wuyingqiang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-<div id="phasebeam">
-  <canvas></canvas>
-  <canvas></canvas>
-  <canvas></canvas>
-</div>
-<script src="/js/phasebeam.js"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

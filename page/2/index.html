@@ -1,59 +1,96 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
-  <title>Page 2 | Hexo</title>
-  <meta name="author" content="John Doe">
+  <title>Scofield&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Scofield's Blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Scofield's Blog">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scofield's Blog">
+<meta name="twitter:description">
+  
+    <link rel="alternate" href="/atom.xml" title="Scofield&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-  
-  
-
-  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-  
 </head>
 
 <body>
-  <header id="header" class="inner"><nav>
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-</nav></header>
-  <div id="content" class="inner">
-  <article class="post">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Scofield&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">For Me</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
   
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+    <article id="post-Mysql-表内容的插入" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/16/Mysql-表内容的插入/" class="article-date">
+  <time datetime="2016-03-16T09:07:00.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title"><a href="/2016/03/16/Mysql-表内容的插入/">Mysql 表内容的插入</a></h1>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/Mysql-表内容的插入/">Mysql 表内容的插入</a>
+    </h1>
   
 
-    <time datetime="2016-03-16T09:07:00.000Z">
-  <span class="day">16</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h2><p>  表插入的语法：<br>  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">INSERT</span> [<span class="keyword">LOW_PRIORITY</span> | <span class="keyword">DELAYED</span> | <span class="keyword">HIGH_PRIORITY</span>] [<span class="keyword">IGNORE</span>]</span><br><span class="line">    [<span class="keyword">INTO</span>] tbl_name [(col_name,...)]</span><br><span class="line">    <span class="keyword">VALUES</span> (&#123;expr | <span class="keyword">DEFAULT</span>&#125;,...),(...),...</span><br><span class="line">    [ <span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> col_name=expr, ... ]</span><br><span class="line">  或：</span><br><span class="line">  <span class="keyword">INSERT</span> [<span class="keyword">LOW_PRIORITY</span> | <span class="keyword">DELAYED</span> | <span class="keyword">HIGH_PRIORITY</span>] [<span class="keyword">IGNORE</span>]</span><br><span class="line">    [<span class="keyword">INTO</span>] tbl_name</span><br><span class="line">    <span class="keyword">SET</span> col_name=&#123;expr | <span class="keyword">DEFAULT</span>&#125;, ...</span><br><span class="line">    [ <span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> col_name=expr, ... ]</span><br><span class="line">  或：</span><br><span class="line"><span class="keyword">INSERT</span> [<span class="keyword">LOW_PRIORITY</span> | <span class="keyword">HIGH_PRIORITY</span>] [<span class="keyword">IGNORE</span>]</span><br><span class="line">    [<span class="keyword">INTO</span>] tbl_name [(col_name,...)]</span><br><span class="line">    <span class="keyword">SELECT</span> ...</span><br><span class="line">    [ <span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> col_name=expr, ... ]</span><br></pre></td></tr></table></figure></p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h2><p>  表插入的语法：<br>  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">INSERT</span> [<span class="keyword">LOW_PRIORITY</span> | <span class="keyword">DELAYED</span> | <span class="keyword">HIGH_PRIORITY</span>] [<span class="keyword">IGNORE</span>]</span><br><span class="line">    [<span class="keyword">INTO</span>] tbl_name [(col_name,...)]</span><br><span class="line">    <span class="keyword">VALUES</span> (&#123;expr | <span class="keyword">DEFAULT</span>&#125;,...),(...),...</span><br><span class="line">    [ <span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> col_name=expr, ... ]</span><br><span class="line">  或：</span><br><span class="line">  <span class="keyword">INSERT</span> [<span class="keyword">LOW_PRIORITY</span> | <span class="keyword">DELAYED</span> | <span class="keyword">HIGH_PRIORITY</span>] [<span class="keyword">IGNORE</span>]</span><br><span class="line">    [<span class="keyword">INTO</span>] tbl_name</span><br><span class="line">    <span class="keyword">SET</span> col_name=&#123;expr | <span class="keyword">DEFAULT</span>&#125;, ...</span><br><span class="line">    [ <span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> col_name=expr, ... ]</span><br><span class="line">  或：</span><br><span class="line"><span class="keyword">INSERT</span> [<span class="keyword">LOW_PRIORITY</span> | <span class="keyword">HIGH_PRIORITY</span>] [<span class="keyword">IGNORE</span>]</span><br><span class="line">    [<span class="keyword">INTO</span>] tbl_name [(col_name,...)]</span><br><span class="line">    <span class="keyword">SELECT</span> ...</span><br><span class="line">    [ <span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> col_name=expr, ... ]</span><br></pre></td></tr></table></figure></p>
 <h2 id="实验证明"><a href="#实验证明" class="headerlink" title="实验证明"></a>实验证明</h2><ul>
 <li><p>如果列清单和VALUES清单均为空清单，则INSERT会创建一个行，每个列都被设置为默认值：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tbl_name () <span class="keyword">VALUES</span>();</span><br></pre></td></tr></table></figure>
@@ -72,48 +109,44 @@
 <li><a href="http://www.jb51.net/article/58087.htm" target="_blank" rel="external">mysql insert语句操作实例讲解</a></li>
 </ul>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/16/Mysql-表内容的插入/" data-id="cio9ossye0013263qmzmo42l4" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/Mysql/">Mysql</a><a href="/tags/INSERT/">INSERT</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/INSERT/">INSERT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
 </article>
 
-  <article class="post">
+
   
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+    <article id="post-Mysql-视图创建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/16/Mysql-视图创建/" class="article-date">
+  <time datetime="2016-03-16T07:15:50.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title"><a href="/2016/03/16/Mysql-视图创建/">Mysql 视图创建</a></h1>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/Mysql-视图创建/">Mysql 视图创建</a>
+    </h1>
   
 
-    <time datetime="2016-03-16T07:15:50.000Z">
-  <span class="day">16</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="关于视图-简单看看-如果不想知道视图用来干嘛的，那就跳过咯"><a href="#关于视图-简单看看-如果不想知道视图用来干嘛的，那就跳过咯" class="headerlink" title="关于视图 - 简单看看(如果不想知道视图用来干嘛的，那就跳过咯)"></a>关于视图 - 简单看看(<a href="#create">如果不想知道视图用来干嘛的，那就跳过咯</a>)</h2><p>  <code>SQL</code> 中，视图时基于SQL语句的结果集的可视化的表</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于视图-简单看看-如果不想知道视图用来干嘛的，那就跳过咯"><a href="#关于视图-简单看看-如果不想知道视图用来干嘛的，那就跳过咯" class="headerlink" title="关于视图 - 简单看看(如果不想知道视图用来干嘛的，那就跳过咯)"></a>关于视图 - 简单看看(<a href="#create">如果不想知道视图用来干嘛的，那就跳过咯</a>)</h2><p>  <code>SQL</code> 中，视图时基于SQL语句的结果集的可视化的表</p>
 <p>  <code>视图</code>包含行和列，就像一个真实的表一样。</p>
 <p>  <code>视图</code>中的字段来自于一个或者多个数据库中的表的字段。</p>
 <p>  结果就是感觉就是单一的一张表，也可以说是间接的表啦。</p>
@@ -143,48 +176,44 @@
 <li><a href="http://wenku.baidu.com/link?url=SJeXJhp0ZgeTQnFfJhc4WUQL5Ov_34l57QKeUcW6nkcY0-GJO5ImFQHUuZpDeB-jTJ6buU87_AAJ2ix8ZWX0J0fwKIcqmWei7HKQd1RMopy" target="_blank" rel="external">Mysql列约束,字段属性</a></li>
 </ul>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/16/Mysql-视图创建/" data-id="cio9ossyg0014263qc2h5bu9p" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/Mysql/">Mysql</a><a href="/tags/VIEW/">VIEW</a><a href="/tags/视图/">视图</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VIEW/">VIEW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视图/">视图</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
 </article>
 
-  <article class="post">
+
   
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+    <article id="post-Mysql-建立表和删除表" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/16/Mysql-建立表和删除表/" class="article-date">
+  <time datetime="2016-03-16T04:05:59.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title"><a href="/2016/03/16/Mysql-建立表和删除表/">Mysql 建立表和删除表</a></h1>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/Mysql-建立表和删除表/">Mysql 建立表和删除表</a>
+    </h1>
   
 
-    <time datetime="2016-03-16T04:05:59.000Z">
-  <span class="day">16</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><ul>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><ul>
 <li><p>CREATE TABLE <code>tableName</code></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE person (</span><br><span class="line">            number INT(11),</span><br><span class="line">            name VARCHAR(255),</span><br><span class="line">            birthday DATE</span><br><span class="line">            );</span><br></pre></td></tr></table></figure>
 </li>
@@ -204,48 +233,44 @@
 <li><a href="http://www.cnblogs.com/ggjucheng/archive/2012/11/03/2752082.html" target="_blank" rel="external">mysql创建和删除表</a></li>
 </ul>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/16/Mysql-建立表和删除表/" data-id="cio9ossy8000z263q7ws9srl1" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/Mysql/">Mysql</a><a href="/tags/table/">table</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/table/">table</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
 </article>
 
-  <article class="post">
+
   
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+    <article id="post-Mysql-建立数据库和删除数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/16/Mysql-建立数据库和删除数据库/" class="article-date">
+  <time datetime="2016-03-16T04:05:37.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title"><a href="/2016/03/16/Mysql-建立数据库和删除数据库/">Mysql 建立数据库和删除数据库</a></h1>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/Mysql-建立数据库和删除数据库/">Mysql 建立数据库和删除数据库</a>
+    </h1>
   
 
-    <time datetime="2016-03-16T04:05:37.000Z">
-  <span class="day">16</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><ul>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><ul>
 <li><p>CREATE DATABASE <code>databaseName</code></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> mysql&gt; CREATE DATABASE test;</span><br><span class="line"> Query OK, 1 row affected (0.05 sec)</span><br><span class="line"> mysql&gt; SHOW DATABASES;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| demo               |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| studentSystem      |</span><br><span class="line">| sys                |</span><br><span class="line">| test               |</span><br><span class="line">| zh                 |</span><br><span class="line">+--------------------+</span><br><span class="line">8 rows in set (0.03 sec)</span><br></pre></td></tr></table></figure>
 </li>
@@ -267,48 +292,44 @@
 <li><a href="http://c.biancheng.net/cpp/html/1444.html" target="_blank" rel="external">Mysql命令create：创建数据库</a></li>
 </ul>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/16/Mysql-建立数据库和删除数据库/" data-id="cio9ossy6000x263qfv0v5g96" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/Mysql/">Mysql</a><a href="/tags/database/">database</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
 </article>
 
-  <article class="post">
+
   
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+    <article id="post-Python-连接-Mysql-数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/14/Python-连接-Mysql-数据库/" class="article-date">
+  <time datetime="2016-03-14T07:01:19.000Z" itemprop="datePublished">2016-03-14</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title"><a href="/2016/03/14/Python-连接-Mysql-数据库/">Python 连接 Mysql 数据库</a></h1>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/14/Python-连接-Mysql-数据库/">Python 连接 Mysql 数据库</a>
+    </h1>
   
 
-    <time datetime="2016-03-14T07:01:19.000Z">
-  <span class="day">14</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="连接-mysql-数据库"><a href="#连接-mysql-数据库" class="headerlink" title="连接 mysql 数据库"></a>连接 mysql 数据库</h2><p> 使用 MySQLdb 来做为连接 mysql 数据库。</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="连接-mysql-数据库"><a href="#连接-mysql-数据库" class="headerlink" title="连接 mysql 数据库"></a>连接 mysql 数据库</h2><p> 使用 MySQLdb 来做为连接 mysql 数据库。</p>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> MySQLdb</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">try</span>:</span><br><span class="line">      <span class="comment"># host 表示主机类型</span></span><br><span class="line">      <span class="comment"># user 登录的用户</span></span><br><span class="line">      <span class="comment"># passwd 登录密码</span></span><br><span class="line">      <span class="comment"># db 登录的数据库</span></span><br><span class="line">      <span class="comment"># port 端口号，在本地情况下可以不用写</span></span><br><span class="line">      conn=MySQLdb.connect(host=<span class="string">'localhost'</span>,user=<span class="string">'root'</span>,passwd=<span class="string">'root'</span>,db=<span class="string">'test'</span>,port=<span class="number">3306</span>) <span class="comment"># 连接数据库</span></span><br><span class="line">      cur=conn.cursor() <span class="comment"># 获取数据库的指针</span></span><br><span class="line">      cur.execute(<span class="string">'select * from user'</span>) <span class="comment"># 数据库操作</span></span><br><span class="line">      cur.close() <span class="comment"># 关闭数据库的指针</span></span><br><span class="line">      conn.close() <span class="comment"># 关闭数据库</span></span><br><span class="line"><span class="keyword">except</span> MySQLdb.Error,e: <span class="comment"># 数据库连接失败。</span></span><br><span class="line">      <span class="keyword">print</span> <span class="string">"Mysql Error %d: %s"</span> % (e.args[<span class="number">0</span>], e.args[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>  如果出现了这种情况<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"db_test.py"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">import</span> MySQLdb</span><br><span class="line">ImportError: No module named MySQLdb</span><br></pre></td></tr></table></figure></p>
 <p> 说明没有安装相应的库</p>
@@ -319,48 +340,44 @@
 <li><a href="https://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.3/MySQL-python-1.2.3.tar.gz/download" target="_blank" rel="external">MySQL-python-1.2.3.tar.gz</a></li>
 </ul>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/14/Python-连接-Mysql-数据库/" data-id="cio9osszi001v263q6ksidyq1" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/Mysql/">Mysql</a><a href="/tags/database/">database</a><a href="/tags/数据库/">数据库</a><a href="/tags/Python/">Python</a><a href="/tags/MySQLdb/">MySQLdb</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQLdb/">MySQLdb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
 </article>
 
-  <article class="post">
+
   
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+    <article id="post-Python-函数返回多值的分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/14/Python-函数返回多值的分析/" class="article-date">
+  <time datetime="2016-03-14T03:16:16.000Z" itemprop="datePublished">2016-03-14</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title"><a href="/2016/03/14/Python-函数返回多值的分析/">Python 函数返回多值的分析</a></h1>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/14/Python-函数返回多值的分析/">Python 函数返回多值的分析</a>
+    </h1>
   
 
-    <time datetime="2016-03-14T03:16:16.000Z">
-  <span class="day">14</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="函数返回多值的原理"><a href="#函数返回多值的原理" class="headerlink" title="函数返回多值的原理"></a>函数返回多值的原理</h2><p>   实际上，函数返回多值的内容就是一个 <code>tuple</code></p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="函数返回多值的原理"><a href="#函数返回多值的原理" class="headerlink" title="函数返回多值的原理"></a>函数返回多值的原理</h2><p>   实际上，函数返回多值的内容就是一个 <code>tuple</code></p>
 <h2 id="我们来看看表面"><a href="#我们来看看表面" class="headerlink" title="我们来看看表面"></a>我们来看看表面</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(x, y, step, angle=<span class="number">0</span>)</span>:</span></span><br><span class="line">    nx = x + step * math.cos(angle)</span><br><span class="line">    ny = y - step * math.sin(angle)</span><br><span class="line">    <span class="keyword">return</span> nx, ny</span><br></pre></td></tr></table></figure>
 <p>这样我们就可以同时获得返回值：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x, y = move(<span class="number">100</span>, <span class="number">100</span>, <span class="number">60</span>, math.pi / <span class="number">6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> x, y</span><br><span class="line"><span class="number">151.961524227</span> <span class="number">70.0</span></span><br></pre></td></tr></table></figure>
@@ -372,48 +389,44 @@
 <li><a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/00137473843313062a8b0e7c19b40aa8f31bdc4db5f6498000" target="_blank" rel="external">廖雪峰python教程</a></li>
 </ul>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/14/Python-函数返回多值的分析/" data-id="cio9ossz0001g263qo0nk3bd8" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/Python/">Python</a><a href="/tags/函数/">函数</a><a href="/tags/多值返回/">多值返回</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数/">函数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多值返回/">多值返回</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
 </article>
 
-  <article class="post">
+
   
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+    <article id="post-KVO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/14/KVO/" class="article-date">
+  <time datetime="2016-03-14T02:02:48.000Z" itemprop="datePublished">2016-03-14</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title"><a href="/2016/03/14/KVO/">KVO</a></h1>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/14/KVO/">KVO</a>
+    </h1>
   
 
-    <time datetime="2016-03-14T02:02:48.000Z">
-  <span class="day">14</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="KVO-基础"><a href="#KVO-基础" class="headerlink" title="KVO 基础"></a>KVO 基础</h2><p>   <strong>解释</strong>: <code>Key-Value observing</code> 就是某个对象的属性改变时通知其他对象的机制。对于<a href="#e1">被观察</a>对象来说，<code>键值观察(KVO)就是注册想要监视的属性的键路径和观察者</code>。</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="KVO-基础"><a href="#KVO-基础" class="headerlink" title="KVO 基础"></a>KVO 基础</h2><p>   <strong>解释</strong>: <code>Key-Value observing</code> 就是某个对象的属性改变时通知其他对象的机制。对于<a href="#e1">被观察</a>对象来说，<code>键值观察(KVO)就是注册想要监视的属性的键路径和观察者</code>。</p>
 <p>   <strong>目的</strong>: 为了在GUI组件和程序之间调整值</p>
 <p>   <strong>过程</strong>: 当<code>属性改变</code>的时候，<a href="#e2">观察者</a>就会接收到消息，虽然和 <code>NSNotification</code> 通知相似，但是 KVO 不存在通知中心的对象，所以不可以指定消息的选择器。</p>
 <p>   <code>KVO</code> 可以实现监视属性， 一对一的关系， 一对多关系等各种形式的属性，可以使用 <code>NSObject</code> 来实现的。</p>
@@ -465,48 +478,44 @@
 <h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h3 id="被观察者"><a href="#被观察者" class="headerlink" title="被观察者"></a><span id="e1">被观察者</span></h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">属性值发生改变的时候，会被观察者了解到它的发生情况</span><br></pre></td></tr></table></figure>
 <h3 id="观察者"><a href="#观察者" class="headerlink" title="观察者"></a><span id="e2">观察者</span></h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置观察对象的主动者</span><br></pre></td></tr></table></figure>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/14/KVO/" data-id="cio9ossxk000i263qef5ojyo8" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/IOS/">IOS</a><a href="/tags/KVO/">KVO</a><a href="/tags/键值观察/">键值观察</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KVO/">KVO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/键值观察/">键值观察</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
 </article>
 
-  <article class="post">
+
   
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+    <article id="post-KVC-键路径的访问" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/13/KVC-键路径的访问/" class="article-date">
+  <time datetime="2016-03-13T15:03:47.000Z" itemprop="datePublished">2016-03-13</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title"><a href="/2016/03/13/KVC-键路径的访问/">KVC 键路径的访问</a></h1>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/13/KVC-键路径的访问/">KVC 键路径的访问</a>
+    </h1>
   
 
-    <time datetime="2016-03-13T15:03:47.000Z">
-  <span class="day">13</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="路径访问简介"><a href="#路径访问简介" class="headerlink" title="路径访问简介"></a>路径访问简介</h2><p>   路径访问就是在类中还有类的实例，那么如何深层次的去访问呢？<br>   通过路径访问的方式去实现</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="路径访问简介"><a href="#路径访问简介" class="headerlink" title="路径访问简介"></a>路径访问简介</h2><p>   路径访问就是在类中还有类的实例，那么如何深层次的去访问呢？<br>   通过路径访问的方式去实现</p>
 <h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">以点切分键路径，并使用第一个键接收器发送 valueForKey: 方法，然后再使用键路径的下一个键，向</span><br><span class="line">得到的对象发送 valueForKey: 的方法，反复直到返回最后获得的对象。</span><br><span class="line"></span><br><span class="line">*/</span></span><br><span class="line">- (id) valueForKeyPath: (NSString *)keyPath</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">与 valueForKeyPath: 方法同样取出对象，这里只对路径中的最后一个键调用 setValue:forKey:</span><br><span class="line">方法，并设定其属性 value.</span><br><span class="line"></span><br><span class="line">*/</span></span><br><span class="line">- (<span class="keyword">void</span>) setValue: (id)value</span><br><span class="line">       forKeyPath: (NSString *) keyPath</span><br></pre></td></tr></table></figure>
 <h2 id="实验证明"><a href="#实验证明" class="headerlink" title="实验证明"></a>实验证明</h2><h3 id="两个类"><a href="#两个类" class="headerlink" title="两个类"></a>两个类</h3><ul>
 <li><p>Person</p>
@@ -519,93 +528,85 @@
 <h3 id="main-m"><a href="#main-m" class="headerlink" title="main.m"></a>main.m</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@autoreleasepool</span>&#123;</span><br><span class="line">        NSLog(@<span class="string">"start"</span>);</span><br><span class="line"></span><br><span class="line">       Person *p = [[Person alloc] init];</span><br><span class="line">       [p setValue:@<span class="string">"hehe"</span> forKey:@<span class="string">"name"</span>];</span><br><span class="line"></span><br><span class="line">       WorkingGroup *aGroup = [[WorkingGroup alloc] init];</span><br><span class="line">       [aGroup setValue:p forKey:@<span class="string">"leader"</span>];</span><br><span class="line"></span><br><span class="line">       NSLog(@<span class="string">"start to move"</span>);</span><br><span class="line"></span><br><span class="line">        id aPerson = [aGroup valueForKey:@<span class="string">"leader"</span>];</span><br><span class="line">        id name = [aPerson valueForKey:@<span class="string">"name"</span>];</span><br><span class="line"></span><br><span class="line">        NSLog(@<span class="string">"without path =&gt; name: %@"</span>, name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 这里实现 键路径的查询</span></span><br><span class="line">        id p_name = [aGroup valueForKeyPath:@<span class="string">"leader.name"</span>];</span><br><span class="line"></span><br><span class="line">        NSLog(@<span class="string">"with path =&gt; name: %@"</span>, p_name);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ clang keyPathOperation.m -framework Foundation</span><br><span class="line">$ ./a.out</span><br><span class="line">2016-03-14 00:30:52.111 a.out[3880:429793] start</span><br><span class="line">2016-03-14 00:30:52.112 a.out[3880:429793] start to move</span><br><span class="line">2016-03-14 00:30:52.113 a.out[3880:429793] without path =&gt; name: hehe</span><br><span class="line">2016-03-14 00:30:52.113 a.out[3880:429793] with path =&gt; name: hehe</span><br></pre></td></tr></table></figure>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/13/KVC-键路径的访问/" data-id="cio9ossxj000g263q0stgxmrh" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/IOS/">IOS</a><a href="/tags/KVC/">KVC</a><a href="/tags/keyPath/">keyPath</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KVC/">KVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keyPath/">keyPath</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
 </article>
 
-  <article class="post">
+
   
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+    <article id="post-KVC-字典对象和数组对象的键值编码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/13/KVC-字典对象和数组对象的键值编码/" class="article-date">
+  <time datetime="2016-03-13T15:00:49.000Z" itemprop="datePublished">2016-03-13</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title"><a href="/2016/03/13/KVC-字典对象和数组对象的键值编码/">KVC 字典对象和数组对象的键值编码</a></h1>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/13/KVC-字典对象和数组对象的键值编码/">KVC 字典对象和数组对象的键值编码</a>
+    </h1>
   
 
-    <time datetime="2016-03-13T15:00:49.000Z">
-  <span class="day">13</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="字典对象的键值编码"><a href="#字典对象的键值编码" class="headerlink" title="字典对象的键值编码"></a>字典对象的键值编码</h2><p>   <code>NSDictionary</code> 定义了两个方法</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="字典对象的键值编码"><a href="#字典对象的键值编码" class="headerlink" title="字典对象的键值编码"></a>字典对象的键值编码</h2><p>   <code>NSDictionary</code> 定义了两个方法</p>
    <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">如果字符串不是以 @ 开头的，将会调用 objectForKey: ; 如果有 @ 开头的就会以剩余的字符串</span><br><span class="line">作为键，调用超类方法 alueForKey:</span><br><span class="line"></span><br><span class="line">*/</span></span><br><span class="line">- (id) valueForKey:(NSString *)key</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">一般会调用 setObject:forKey: , value 为 nil 时，就会调用 removeObjectForKey: 删除</span><br><span class="line">键对应的对象</span><br><span class="line"></span><br><span class="line">*/</span></span><br><span class="line">- (<span class="keyword">void</span>) setValue: (id)value</span><br><span class="line">           forKey:(NSString *)key</span><br></pre></td></tr></table></figure>
 <h2 id="数组对象的键值编码"><a href="#数组对象的键值编码" class="headerlink" title="数组对象的键值编码"></a>数组对象的键值编码</h2><p>   <code>NSArray</code> 和 <code>NSMutableArray</code> 以及 集合类 <code>NSSet</code> 和 <code>NSMutableSet</code> 也定义了两个方法<br>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">以 key 为参数，对于各个元素调用 valueForKey: 后返回数组，对各成员使用方法 valueForKey:,</span><br><span class="line">当返回 nil 时，包含 NSNull 的实例。</span><br><span class="line"></span><br><span class="line">*/</span></span><br><span class="line">- (id) valueForKey:(NSString *)key</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">对所有的元素调用 setValue:forKey: . 需要注意的是集合对象本身不可以改变，也可以调用这个</span><br><span class="line">方法</span><br><span class="line"></span><br><span class="line">*/</span></span><br><span class="line">- (<span class="keyword">void</span>) setValue: (id)value</span><br><span class="line">           forKey:(NSString *)key</span><br></pre></td></tr></table></figure></p>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/13/KVC-字典对象和数组对象的键值编码/" data-id="cio9ossxb000b263qj5ygoiz9" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/IOS/">IOS</a><a href="/tags/KVC/">KVC</a><a href="/tags/字典/">字典</a><a href="/tags/数组/">数组</a><a href="/tags/键值编码/">键值编码</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KVC/">KVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字典/">字典</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/键值编码/">键值编码</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
 </article>
 
-  <article class="post">
+
   
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+    <article id="post-Mysql-数据类型的属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/13/Mysql-数据类型的属性/" class="article-date">
+  <time datetime="2016-03-13T08:00:16.000Z" itemprop="datePublished">2016-03-13</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title"><a href="/2016/03/13/Mysql-数据类型的属性/">Mysql 数据类型的属性</a></h1>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/13/Mysql-数据类型的属性/">Mysql 数据类型的属性</a>
+    </h1>
   
 
-    <time datetime="2016-03-13T08:00:16.000Z">
-  <span class="day">13</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO_INCREMENT"></a>AUTO_INCREMENT</h2><p>auto_increment能为新插入的行赋一个唯一的整数标识符。为列赋此属性将为每个新插入的行赋值为上一次插入的ID+1。<br>MySQL要求将auto_increment属性用于作为主键的列。此外，每个表只允许有一个auto_increment列。例如：</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO_INCREMENT"></a>AUTO_INCREMENT</h2><p>auto_increment能为新插入的行赋一个唯一的整数标识符。为列赋此属性将为每个新插入的行赋值为上一次插入的ID+1。<br>MySQL要求将auto_increment属性用于作为主键的列。此外，每个表只允许有一个auto_increment列。例如：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id smallint not null auto_increment primary key</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="BINARY"><a href="#BINARY" class="headerlink" title="BINARY"></a>BINARY</h2><p>binary属性只用于char和varchar值。当为列指定了该属性时，将以区分大小写的方式排序。与之相反，忽略binary<br>属性时，将使用不区分大小写的方式排序。例如：</p>
@@ -634,64 +635,124 @@
 <li><a href="http://www.jellythink.com/archives/642" target="_blank" rel="external">MySQL数据类型和属性</a></li>
 </ul>
 
-    
-    
-    <footer class="meta">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/13/Mysql-数据类型的属性/" data-id="cio9ossyc0012263qttqmupzi" class="article-share-link">Share</a>
       
       
-  <div class="tags">
-<a href="/tags/Mysql/">Mysql</a><a href="/tags/database/">database</a><a href="/tags/数据类型/">数据类型</a><a href="/tags/数据库/">数据库</a><a href="/tags/属性/">属性</a></div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/属性/">属性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据类型/">数据类型</a></li></ul>
 
-      
     </footer>
-    
   </div>
   
 </article>
 
 
-<nav id="pagenavi">
   
-    <a href="/" class="alignleft prev">Prev</a>
-  
-  
-    <a href="/page/3/" class="alignright next">Next</a>
-  
-  <div class="clearfix"></div>
-</nav></div>
-  <footer id="footer" class="inner"><div class="social alignright">
-  
-  
-  
-  
-  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
-</div>
-<p>
-  
-  &copy; 2016 John Doe
-  
-</p>
-<div class="clearfix"></div></footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
 
 
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AFNetworking/">AFNetworking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CLLocationManager/">CLLocationManager</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Delegate/">Delegate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory/">Directory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory-operation/">Directory_operation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVC/">KVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVO/">KVO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Key-Value/">Key-Value</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Location/">Location</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMediaQuery/">MPMediaQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMusicPlayerController/">MPMusicPlayerController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Man/">Man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-c/">Objective-c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStoryboard/">UIStoryboard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VIEW/">VIEW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio-player/">audio player</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/branch/">branch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/checkout/">checkout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/closedir/">closedir</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-line/">command line</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dictionary/">dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dirent/">dirent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fetch/">fetch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-attribute/">file attribute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyPath/">keyPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyword-k/">keyword -k</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/local/">local</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/login/">login</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge/">merge</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opendir/">opendir</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/readdir/">readdir</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seekdir/">seekdir</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setValue/">setValue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setattr/">setattr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stat/">stat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/str/">str</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/table/">table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/valueForKey/">valueForKey</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片外链/">图片外链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/外部链接/">外部链接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多值返回/">多值返回</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典/">字典</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/属性/">属性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据类型/">数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度网盘/">百度网盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类型判断/">类型判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视图/">视图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件下载/">软件下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/远程仓库/">远程仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值编码/">键值编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值观察/">键值观察</a></li></ul>
+    </div>
+  </div>
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/CLLocationManager/" style="font-size: 10px;">CLLocationManager</a> <a href="/tags/Delegate/" style="font-size: 10px;">Delegate</a> <a href="/tags/Directory/" style="font-size: 11.25px;">Directory</a> <a href="/tags/Directory-operation/" style="font-size: 10px;">Directory_operation</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/KVC/" style="font-size: 15px;">KVC</a> <a href="/tags/KVO/" style="font-size: 10px;">KVO</a> <a href="/tags/Key-Value/" style="font-size: 10px;">Key-Value</a> <a href="/tags/Linux/" style="font-size: 16.25px;">Linux</a> <a href="/tags/Location/" style="font-size: 10px;">Location</a> <a href="/tags/MPMediaQuery/" style="font-size: 10px;">MPMediaQuery</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/Mac/" style="font-size: 11.25px;">Mac</a> <a href="/tags/Man/" style="font-size: 10px;">Man</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/Mysql/" style="font-size: 18.75px;">Mysql</a> <a href="/tags/Objective-c/" style="font-size: 11.25px;">Objective-c</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/UIStoryboard/" style="font-size: 10px;">UIStoryboard</a> <a href="/tags/VIEW/" style="font-size: 10px;">VIEW</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/audio-player/" style="font-size: 10px;">audio player</a> <a href="/tags/branch/" style="font-size: 11.25px;">branch</a> <a href="/tags/checkout/" style="font-size: 10px;">checkout</a> <a href="/tags/closedir/" style="font-size: 10px;">closedir</a> <a href="/tags/command-line/" style="font-size: 10px;">command line</a> <a href="/tags/database/" style="font-size: 15px;">database</a> <a href="/tags/dict/" style="font-size: 12.5px;">dict</a> <a href="/tags/dictionary/" style="font-size: 12.5px;">dictionary</a> <a href="/tags/dirent/" style="font-size: 10px;">dirent</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/file-attribute/" style="font-size: 10px;">file attribute</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/install/" style="font-size: 11.25px;">install</a> <a href="/tags/keyPath/" style="font-size: 10px;">keyPath</a> <a href="/tags/keyword-k/" style="font-size: 10px;">keyword -k</a> <a href="/tags/local/" style="font-size: 10px;">local</a> <a href="/tags/login/" style="font-size: 10px;">login</a> <a href="/tags/merge/" style="font-size: 10px;">merge</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/opendir/" style="font-size: 10px;">opendir</a> <a href="/tags/readdir/" style="font-size: 10px;">readdir</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/seekdir/" style="font-size: 10px;">seekdir</a> <a href="/tags/setValue/" style="font-size: 10px;">setValue</a> <a href="/tags/setattr/" style="font-size: 10px;">setattr</a> <a href="/tags/stat/" style="font-size: 11.25px;">stat</a> <a href="/tags/str/" style="font-size: 10px;">str</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/struct/" style="font-size: 11.25px;">struct</a> <a href="/tags/table/" style="font-size: 10px;">table</a> <a href="/tags/valueForKey/" style="font-size: 10px;">valueForKey</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/图片外链/" style="font-size: 10px;">图片外链</a> <a href="/tags/外部链接/" style="font-size: 10px;">外部链接</a> <a href="/tags/多值返回/" style="font-size: 10px;">多值返回</a> <a href="/tags/字典/" style="font-size: 10px;">字典</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/数据库/" style="font-size: 13.75px;">数据库</a> <a href="/tags/数据类型/" style="font-size: 11.25px;">数据类型</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/百度网盘/" style="font-size: 10px;">百度网盘</a> <a href="/tags/类型判断/" style="font-size: 10px;">类型判断</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/软件下载/" style="font-size: 10px;">软件下载</a> <a href="/tags/远程仓库/" style="font-size: 10px;">远程仓库</a> <a href="/tags/键值编码/" style="font-size: 10px;">键值编码</a> <a href="/tags/键值观察/" style="font-size: 10px;">键值观察</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
 
 
-<div id="phasebeam">
-  <canvas></canvas>
-  <canvas></canvas>
-  <canvas></canvas>
-</div>
-<script src="/js/phasebeam.js"></script>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/24/CentOS-下Lamp环境的快速搭建/">CentOS 下Lamp环境的快速搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/24/Python-解析配置模块-ConfigParser/">Python 解析配置模块 ConfigParser</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/24/Python-字符串转换成字典/">Python 字符串转换成字典</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/24/Python-utf-8编码的16进制字符串转换成对应的文字/">Python utf-8编码的16进制字符串转换成对应的文字</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Wuyingqiang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

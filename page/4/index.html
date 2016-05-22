@@ -70,6 +70,78 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Linux-目录操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/08/Linux-目录操作/" class="article-date">
+  <time datetime="2016-03-08T08:09:48.000Z" itemprop="datePublished">2016-03-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/08/Linux-目录操作/">Linux 目录操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简单说明一下"><a href="#简单说明一下" class="headerlink" title="简单说明一下"></a>简单说明一下</h2><p>  <strong>目录是文件的列表，在Linux下对于目录来说是有系统调用可以使用来操作目录的。</strong></p>
+<p>  <strong>目录的操作需要一个目录文件绝对路径或者当前目录的相对路径。</strong></p>
+<p>  <strong>目录操作的大概过程为：打开目录，读取目录内容放入目录的结构体里面，然后对于结构体的数据进行呈现，最后不需要的时候关闭目录。</strong></p>
+<p>  <strong>打开目录，会得到一个打开的目录文件描述符 <code>DIR</code> (一个无符号整数)，读取目录内容需要目录的文件描述符.</strong></p>
+<p>  <strong><code>DIR</code> 作为 打开目录的文件描述符的宏参数</strong></p>
+<hr>
+<h2 id="open"><a href="#open" class="headerlink" title="open"></a>open</h2><ul>
+<li>函数参考<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DIR *opendir(const char *name); /* name: 目录的绝对路径或者相对路径 */</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>开始打开文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">使用该函数打开目录，返回的目录文件描述符可以用于读取目录内容。</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line">...</span><br><span class="line">DIR *dir_ptr ; /* 目录文件描述符指针 */</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ((dir_ptr = opendir(<span class="string">"/"</span>)) == NULL) &#123; /* 打开目录 */</span><br><span class="line">  fprintf(stderr, <span class="string">"something error: %s"</span>, name);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<hr>
+</li>
+</ul>
+<h2 id="read"><a href="#read" class="headerlink" title="read"></a>read</h2><ul>
+<li><p>函数参考</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int readdir(unsigned int fd, struct old_linux_dirent *dirp,</span><br><span class="line">                 unsigned int count);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开始读取目录内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">使用该目录文件描述符，读取目录文件的内容，放入结构体指针中。</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line">...</span><br><span class="line">struct dirent *direntp; /* 目录结构体指针 */</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> ((direntp = readdir(dir_ptr)) != NULL) &#123; /* 读取存入结构体 */</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, direntp-&gt;d_name);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><a href="http://scofieldwyq.github.io/2016/03/08/Linux-%E7%9B%AE%E5%BD%95%E5%86%85%E5%AE%B9%E7%9A%84%E7%BB%93%E6%9E%84/" target="_blank" rel="external">dirent 结构体的内容</a></p>
+</li>
+</ul>
+<h2 id="close"><a href="#close" class="headerlink" title="close"></a>close</h2><ul>
+<li><p>函数参考</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int closedir(DIR *dirp);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">使用目录文件描述符关闭目录。</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line">...</span><br><span class="line">closedir(dir_ptr);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="move-curser"><a href="#move-curser" class="headerlink" title="move curser"></a>move curser</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/08/Linux-目录操作/" data-id="cioitaqrg000wg0sefvre707a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Directory/">Directory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Directory-operation/">Directory_operation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/closedir/">closedir</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opendir/">opendir</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/readdir/">readdir</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/seekdir/">seekdir</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Linux-文件属性的结构体" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/08/Linux-文件属性的结构体/" class="article-date">
@@ -105,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/08/Linux-文件属性的结构体/" data-id="ciohd560c000uuz9kz1egpbq7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/08/Linux-文件属性的结构体/" data-id="cioitaqra000sg0seh4u2km8x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/file/">file</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stat/">stat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struct/">struct</a></li></ul>
@@ -152,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/08/Linux-目录内容的结构/" data-id="ciohd560c000vuz9k7pqjx75e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/08/Linux-目录内容的结构/" data-id="cioitaqrg000vg0se4vp65grp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Directory/">Directory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dirent/">dirent</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struct/">struct</a></li></ul>
@@ -265,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/08/IOS-本地音乐播放/" data-id="ciohd55zr000guz9knz6tsnry" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/08/IOS-本地音乐播放/" data-id="cioitaqr2000ig0seni4f7q0e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MPMediaQuery/">MPMediaQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MPMusicPlayerController/">MPMusicPlayerController</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/audio-player/">audio player</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/local/">local</a></li></ul>
@@ -311,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/04/Man为什么查不到和书上的相似的结果/" data-id="ciohd560g0010uz9kt6hddy8h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/04/Man为什么查不到和书上的相似的结果/" data-id="cioitaqrj000zg0sejp2aenn4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Man/">Man</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/command-line/">command line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keyword-k/">keyword -k</a></li></ul>
@@ -436,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/02/IOS-Storyboard/" data-id="ciohd55zq000fuz9kgsn1xxfm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/02/IOS-Storyboard/" data-id="cioitaqqo0007g0setghmmf2a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UIStoryboard/">UIStoryboard</a></li></ul>
@@ -547,7 +619,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/01/AFNetworking学习笔记-1/" data-id="ciohd55yz0000uz9k8xw0a0n4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/01/AFNetworking学习笔记-1/" data-id="cioitaqq90000g0se0a8zld6a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AFNetworking/">AFNetworking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
@@ -648,7 +720,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/01/node-安装/" data-id="ciohd561h0025uz9k0tq7oh20" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/01/node-安装/" data-id="cioitaqsi0020g0setgnr1ni2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
@@ -737,7 +809,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/01/Git-安装/" data-id="ciohd55zb0004uz9k8zc97me1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/01/Git-安装/" data-id="cioitaqr0000gg0sezt01rpn0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/">install</a></li></ul>
@@ -797,104 +869,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/29/Github图片外链设置/" data-id="ciohd55zi0008uz9kbb7dxzko" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/29/Github图片外链设置/" data-id="cioitaquo008og0serxm1yxr9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片外链/">图片外链</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git从远程库同步到本地仓库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/02/29/git从远程库同步到本地仓库/" class="article-date">
-  <time datetime="2016-02-28T17:38:04.000Z" itemprop="datePublished">2016-02-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/29/git从远程库同步到本地仓库/">git从远程库同步到本地仓库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
-<li><a href="#d1">远程仓库发生改变，本地仓库没有改变</a></li>
-<li><a href="#d2">远程仓库没有改变，本地仓库发生改变</a></li>
-<li><a href="#d3">远程仓库，本地仓库都发生改变</a></li>
-</ol>
-<h1 id="有三种方式的情况下，如何做到没有Bug的合并代码。。。"><a href="#有三种方式的情况下，如何做到没有Bug的合并代码。。。" class="headerlink" title="有三种方式的情况下，如何做到没有Bug的合并代码。。。"></a>有三种方式的情况下，如何做到没有Bug的合并代码。。。</h1><hr>
-<h2 id="远程仓库发生改变，本地仓库没有改变"><a href="#远程仓库发生改变，本地仓库没有改变" class="headerlink" title="远程仓库发生改变，本地仓库没有改变"></a><span id="d1">远程仓库发生改变，本地仓库没有改变</span></h2><ul>
-<li><p>首先，查看远程仓库 <code>git remote -v</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin	git@github.com:&#123;User&#125;/Understanding_Unix-Linux_Programming.git (fetch)</span><br><span class="line">origin	git@github.com:&#123;User&#125;/Understanding_Unix-Linux_Programming.git (push)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把远程库更新到本地 <code>git fetch origin master</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin master</span><br><span class="line">Warning: Permanently added the RSA host key for IP address &apos;&#123;IP address such as: 192.168.1.1 &#125;&apos; to the list of known hosts.</span><br><span class="line">From github.com:&#123;User&#125;/Understanding_Unix-Linux_Programming</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>比较远程更新和本地版本库的差异 <code>git log master.. origin/master</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git log master.. origin/master</span><br><span class="line">commit ce39f8b3eeee898a2a038444f897f2aef3673493</span><br><span class="line">Author: &#123;User&#125; &lt;794870409@qq.com&gt;</span><br><span class="line">Date:   Fri Feb 26 14:14:39 2016 +0800</span><br><span class="line"></span><br><span class="line">    &#123;The context origin added ... &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>合并远程库 <code>git merge origin/master</code></p>
-<ul>
-<li><p>有差异</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git merge origin/master</span><br><span class="line">Updating eb32b20..ce39f8b</span><br><span class="line">Fast-forward</span><br><span class="line"> README.md | 2 +-</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>无差异</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git merge origin/master</span><br><span class="line">Already up-to-date</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="远程仓库没有改变，本地仓库发生改变"><a href="#远程仓库没有改变，本地仓库发生改变" class="headerlink" title="远程仓库没有改变，本地仓库发生改变"></a><span id="d2">远程仓库没有改变，本地仓库发生改变</span></h2><p><strong>命令推荐</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git status // 查看版本库的状态</span><br><span class="line">git add .|[file you want add like README.md] // 添加修改的文件进入版本库</span><br><span class="line">git commit -m &quot;the content of your modify&quot; // 提交版本库</span><br><span class="line">git push -u origin master // 上传到远程版本库</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>首先你的文件出现了修改 <code>git status</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">	modified:   README.md</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>你的文件被修改后就会出现这样的显示</p>
-<ul>
-<li>添加文件 <code>git add .|[或者某个文件]|like: README.md</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git add README.md</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">	modified:   README.md</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>文件添加后，就会出现这种</p>
-<ul>
-<li>提交文件 <code>git commit -m &quot;content&quot;</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;update content&quot;</span><br><span class="line">[master 7456161] update content</span><br><span class="line"> Committer: &#123;User&#125; &lt;wuyingqiang@wuyingqiangs-MacBook-Pro.local&gt;</span><br><span class="line">Your name and email address were configured automatically based</span><br><span class="line">on your username and hostname. Please check that they are accurate.</span><br><span class="line">You can suppress this message by setting them explicitly. Run the</span><br><span class="line">following command and follow the instructions in your editor to edit</span><br><span class="line">your configuration file:</span><br><span class="line"></span><br><span class="line">    git config --global --edit</span><br><span class="line"></span><br><span class="line">After doing this, you may fix the identity used for this commit with:</span><br><span class="line"></span><br><span class="line">    git commit --amend --reset-author</span><br><span class="line"></span><br><span class="line"> 1 file changed, 8 insertions(+), 3 deletions(-)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>文件提交到你的版本库，这样本地版本就更新了</p>
-<ul>
-<li>和远程库进行同步 <code>git push -u origin master</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">Counting objects: 3, done.</span><br><span class="line">Delta compression using up to 8 threads.</span><br><span class="line">Compressing objects: 100% (2/2), done.</span><br><span class="line">Writing objects: 100% (3/3), 417 bytes | 0 bytes/s, done.</span><br><span class="line">Total 3 (delta 1), reused 0 (delta 0)</span><br><span class="line">To git@github.com:scofieldWyq/Understanding_Unix-Linux_Programming.git</span><br><span class="line">   ce39f8b..7456161  master -&gt; master</span><br><span class="line">Branch master set up to track remote branch master from origin.</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这样我们的版本库同步也就好了。</p>
-<hr>
-<h2 id="远程仓库，本地仓库都发生改变"><a href="#远程仓库，本地仓库都发生改变" class="headerlink" title="远程仓库，本地仓库都发生改变"></a><span id="d3">远程仓库，本地仓库都发生改变</span></h2><p>  以后再说咯。。。</p>
-<hr>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>掌握 <code>git</code> 远程和本地的同步很重要的。</li>
-<li>还有解决同步产生的问题也是锻炼自己的一个机会。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/29/git从远程库同步到本地仓库/" data-id="ciohd561g0023uz9kbsuogl5p" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/merge/">merge</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/远程仓库/">远程仓库</a></li></ul>
 
     </footer>
   </div>
@@ -919,7 +897,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AFNetworking/">AFNetworking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CLLocationManager/">CLLocationManager</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Delegate/">Delegate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory/">Directory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory-operation/">Directory_operation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVC/">KVC</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVO/">KVO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Key-Value/">Key-Value</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Location/">Location</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMediaQuery/">MPMediaQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMusicPlayerController/">MPMusicPlayerController</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Man/">Man</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-c/">Objective-c</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Provisional-Profile/">Provisional Profile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStoryboard/">UIStoryboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VIEW/">VIEW</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio-player/">audio player</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/branch/">branch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/checkout/">checkout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/closedir/">closedir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-line/">command line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dictionary/">dictionary</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dirent/">dirent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fetch/">fetch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-attribute/">file attribute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyPath/">keyPath</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyword-k/">keyword -k</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/local/">local</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/login/">login</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge/">merge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opendir/">opendir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/readdir/">readdir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seekdir/">seekdir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setValue/">setValue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setattr/">setattr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stat/">stat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/str/">str</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/">struct</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/table/">table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/valueForKey/">valueForKey</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片外链/">图片外链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/外部链接/">外部链接</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多值返回/">多值返回</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典/">字典</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/属性/">属性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据类型/">数据类型</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度网盘/">百度网盘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类型判断/">类型判断</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视图/">视图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件下载/">软件下载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/远程仓库/">远程仓库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值编码/">键值编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值观察/">键值观察</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AFNetworking/">AFNetworking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CLLocationManager/">CLLocationManager</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Delegate/">Delegate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory/">Directory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory-operation/">Directory_operation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVC/">KVC</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVO/">KVO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Key-Value/">Key-Value</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Location/">Location</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMediaQuery/">MPMediaQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMusicPlayerController/">MPMusicPlayerController</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Man/">Man</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-c/">Objective-c</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Provisional-Profile/">Provisional Profile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStoryboard/">UIStoryboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VIEW/">VIEW</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio-player/">audio player</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/branch/">branch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/checkout/">checkout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/closedir/">closedir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-line/">command line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dictionary/">dictionary</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dirent/">dirent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fetch/">fetch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-attribute/">file attribute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/font/">font</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyPath/">keyPath</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyword-k/">keyword -k</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/local/">local</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/login/">login</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge/">merge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/office/">office</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opendir/">opendir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/readdir/">readdir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seekdir/">seekdir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setValue/">setValue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setattr/">setattr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/size/">size</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stat/">stat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/str/">str</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/">struct</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/table/">table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/valueForKey/">valueForKey</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word/">word</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片外链/">图片外链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/外部链接/">外部链接</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多值返回/">多值返回</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典/">字典</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/属性/">属性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据类型/">数据类型</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度网盘/">百度网盘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类型判断/">类型判断</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视图/">视图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件下载/">软件下载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/远程仓库/">远程仓库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值编码/">键值编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值观察/">键值观察</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -929,7 +907,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/CLLocationManager/" style="font-size: 10px;">CLLocationManager</a> <a href="/tags/Delegate/" style="font-size: 10px;">Delegate</a> <a href="/tags/Directory/" style="font-size: 11.25px;">Directory</a> <a href="/tags/Directory-operation/" style="font-size: 10px;">Directory_operation</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/KVC/" style="font-size: 15px;">KVC</a> <a href="/tags/KVO/" style="font-size: 10px;">KVO</a> <a href="/tags/Key-Value/" style="font-size: 10px;">Key-Value</a> <a href="/tags/Linux/" style="font-size: 16.25px;">Linux</a> <a href="/tags/Location/" style="font-size: 10px;">Location</a> <a href="/tags/MPMediaQuery/" style="font-size: 10px;">MPMediaQuery</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/Mac/" style="font-size: 11.25px;">Mac</a> <a href="/tags/Man/" style="font-size: 10px;">Man</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/Mysql/" style="font-size: 18.75px;">Mysql</a> <a href="/tags/Objective-c/" style="font-size: 11.25px;">Objective-c</a> <a href="/tags/Provisional-Profile/" style="font-size: 10px;">Provisional Profile</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/UIStoryboard/" style="font-size: 10px;">UIStoryboard</a> <a href="/tags/VIEW/" style="font-size: 10px;">VIEW</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/audio-player/" style="font-size: 10px;">audio player</a> <a href="/tags/branch/" style="font-size: 11.25px;">branch</a> <a href="/tags/checkout/" style="font-size: 10px;">checkout</a> <a href="/tags/closedir/" style="font-size: 10px;">closedir</a> <a href="/tags/command-line/" style="font-size: 10px;">command line</a> <a href="/tags/database/" style="font-size: 15px;">database</a> <a href="/tags/dict/" style="font-size: 12.5px;">dict</a> <a href="/tags/dictionary/" style="font-size: 12.5px;">dictionary</a> <a href="/tags/dirent/" style="font-size: 10px;">dirent</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/file-attribute/" style="font-size: 10px;">file attribute</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/install/" style="font-size: 11.25px;">install</a> <a href="/tags/keyPath/" style="font-size: 10px;">keyPath</a> <a href="/tags/keyword-k/" style="font-size: 10px;">keyword -k</a> <a href="/tags/local/" style="font-size: 10px;">local</a> <a href="/tags/login/" style="font-size: 10px;">login</a> <a href="/tags/merge/" style="font-size: 10px;">merge</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/opendir/" style="font-size: 10px;">opendir</a> <a href="/tags/readdir/" style="font-size: 10px;">readdir</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/seekdir/" style="font-size: 10px;">seekdir</a> <a href="/tags/setValue/" style="font-size: 10px;">setValue</a> <a href="/tags/setattr/" style="font-size: 10px;">setattr</a> <a href="/tags/stat/" style="font-size: 11.25px;">stat</a> <a href="/tags/str/" style="font-size: 10px;">str</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/struct/" style="font-size: 11.25px;">struct</a> <a href="/tags/table/" style="font-size: 10px;">table</a> <a href="/tags/valueForKey/" style="font-size: 10px;">valueForKey</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/图片外链/" style="font-size: 10px;">图片外链</a> <a href="/tags/外部链接/" style="font-size: 10px;">外部链接</a> <a href="/tags/多值返回/" style="font-size: 10px;">多值返回</a> <a href="/tags/字典/" style="font-size: 10px;">字典</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/数据库/" style="font-size: 13.75px;">数据库</a> <a href="/tags/数据类型/" style="font-size: 11.25px;">数据类型</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/百度网盘/" style="font-size: 10px;">百度网盘</a> <a href="/tags/类型判断/" style="font-size: 10px;">类型判断</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/软件下载/" style="font-size: 10px;">软件下载</a> <a href="/tags/远程仓库/" style="font-size: 10px;">远程仓库</a> <a href="/tags/键值编码/" style="font-size: 10px;">键值编码</a> <a href="/tags/键值观察/" style="font-size: 10px;">键值观察</a>
+      <a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/CLLocationManager/" style="font-size: 10px;">CLLocationManager</a> <a href="/tags/Delegate/" style="font-size: 10px;">Delegate</a> <a href="/tags/Directory/" style="font-size: 11.25px;">Directory</a> <a href="/tags/Directory-operation/" style="font-size: 10px;">Directory_operation</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/KVC/" style="font-size: 15px;">KVC</a> <a href="/tags/KVO/" style="font-size: 10px;">KVO</a> <a href="/tags/Key-Value/" style="font-size: 10px;">Key-Value</a> <a href="/tags/Linux/" style="font-size: 16.25px;">Linux</a> <a href="/tags/Location/" style="font-size: 10px;">Location</a> <a href="/tags/MPMediaQuery/" style="font-size: 10px;">MPMediaQuery</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/Mac/" style="font-size: 11.25px;">Mac</a> <a href="/tags/Man/" style="font-size: 10px;">Man</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/Mysql/" style="font-size: 18.75px;">Mysql</a> <a href="/tags/Objective-c/" style="font-size: 11.25px;">Objective-c</a> <a href="/tags/Provisional-Profile/" style="font-size: 10px;">Provisional Profile</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/UIStoryboard/" style="font-size: 10px;">UIStoryboard</a> <a href="/tags/VIEW/" style="font-size: 10px;">VIEW</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/audio-player/" style="font-size: 10px;">audio player</a> <a href="/tags/branch/" style="font-size: 11.25px;">branch</a> <a href="/tags/checkout/" style="font-size: 10px;">checkout</a> <a href="/tags/closedir/" style="font-size: 10px;">closedir</a> <a href="/tags/command-line/" style="font-size: 10px;">command line</a> <a href="/tags/database/" style="font-size: 15px;">database</a> <a href="/tags/dict/" style="font-size: 12.5px;">dict</a> <a href="/tags/dictionary/" style="font-size: 12.5px;">dictionary</a> <a href="/tags/dirent/" style="font-size: 10px;">dirent</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/file-attribute/" style="font-size: 10px;">file attribute</a> <a href="/tags/font/" style="font-size: 10px;">font</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/install/" style="font-size: 11.25px;">install</a> <a href="/tags/keyPath/" style="font-size: 10px;">keyPath</a> <a href="/tags/keyword-k/" style="font-size: 10px;">keyword -k</a> <a href="/tags/local/" style="font-size: 10px;">local</a> <a href="/tags/login/" style="font-size: 10px;">login</a> <a href="/tags/merge/" style="font-size: 10px;">merge</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/opendir/" style="font-size: 10px;">opendir</a> <a href="/tags/readdir/" style="font-size: 10px;">readdir</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/seekdir/" style="font-size: 10px;">seekdir</a> <a href="/tags/setValue/" style="font-size: 10px;">setValue</a> <a href="/tags/setattr/" style="font-size: 10px;">setattr</a> <a href="/tags/size/" style="font-size: 10px;">size</a> <a href="/tags/stat/" style="font-size: 11.25px;">stat</a> <a href="/tags/str/" style="font-size: 10px;">str</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/struct/" style="font-size: 11.25px;">struct</a> <a href="/tags/table/" style="font-size: 10px;">table</a> <a href="/tags/valueForKey/" style="font-size: 10px;">valueForKey</a> <a href="/tags/word/" style="font-size: 10px;">word</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/图片外链/" style="font-size: 10px;">图片外链</a> <a href="/tags/外部链接/" style="font-size: 10px;">外部链接</a> <a href="/tags/多值返回/" style="font-size: 10px;">多值返回</a> <a href="/tags/字典/" style="font-size: 10px;">字典</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/数据库/" style="font-size: 13.75px;">数据库</a> <a href="/tags/数据类型/" style="font-size: 11.25px;">数据类型</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/百度网盘/" style="font-size: 10px;">百度网盘</a> <a href="/tags/类型判断/" style="font-size: 10px;">类型判断</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/软件下载/" style="font-size: 10px;">软件下载</a> <a href="/tags/远程仓库/" style="font-size: 10px;">远程仓库</a> <a href="/tags/键值编码/" style="font-size: 10px;">键值编码</a> <a href="/tags/键值观察/" style="font-size: 10px;">键值观察</a>
     </div>
   </div>
 
@@ -938,7 +916,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">37</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">37</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -949,6 +927,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/05/23/word字体对应的磅值/">word字体对应的磅值</a>
+          </li>
         
           <li>
             <a href="/2016/05/22/IOS删除多余的Provisioning-Profile/">IOS删除多余的Provisioning Profile</a>
@@ -964,10 +946,6 @@
         
           <li>
             <a href="/2016/03/24/Python-字符串转换成字典/">Python 字符串转换成字典</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/24/Python-utf-8编码的16进制字符串转换成对应的文字/">Python utf-8编码的16进制字符串转换成对应的文字</a>
           </li>
         
       </ul>

@@ -70,6 +70,72 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Mysql-数据类型的属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/13/Mysql-数据类型的属性/" class="article-date">
+  <time datetime="2016-03-13T08:00:16.000Z" itemprop="datePublished">2016-03-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/13/Mysql-数据类型的属性/">Mysql 数据类型的属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO_INCREMENT"></a>AUTO_INCREMENT</h2><p>auto_increment能为新插入的行赋一个唯一的整数标识符。为列赋此属性将为每个新插入的行赋值为上一次插入的ID+1。<br>MySQL要求将auto_increment属性用于作为主键的列。此外，每个表只允许有一个auto_increment列。例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id smallint not null auto_increment primary key</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="BINARY"><a href="#BINARY" class="headerlink" title="BINARY"></a>BINARY</h2><p>binary属性只用于char和varchar值。当为列指定了该属性时，将以区分大小写的方式排序。与之相反，忽略binary<br>属性时，将使用不区分大小写的方式排序。例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname char(25) binary not null</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="DEFAULT"><a href="#DEFAULT" class="headerlink" title="DEFAULT"></a>DEFAULT</h2><p>default属性确保在没有任何值可用的情况下，赋予某个常量值，这个值必须是常量，因为MySQL不允许插入函数或表达式值。<br>此外，此属性无法用于BLOB或TEXT列。如果已经为此列指定了NULL属性，没有指定默认值时默认值将为NULL，否则默认值将<br>依赖于字段的数据类型。例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subscribed enum('0', '1') not null default '0'</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="INDEX"><a href="#INDEX" class="headerlink" title="INDEX"></a>INDEX</h2><p>如果所有其他因素都相同，要加速数据库查询，使用索引通常是最重要的一个步骤。索引一个列会为该列创建一个有序的键数<br>组，每个键指向其相应的表行。以后针对输入条件可以搜索这个有序的键数组，与搜索整个未索引的表相比，这将在性能方面<br>得到极大的提升。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> employees</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">varchar</span>(<span class="number">9</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    firstname <span class="built_in">varchar</span>(<span class="number">15</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    lastname <span class="built_in">varchar</span>(<span class="number">25</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    email <span class="built_in">varchar</span>(<span class="number">45</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    phone <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">index</span> lastname(lastname),</span><br><span class="line">    primary <span class="keyword">key</span>(<span class="keyword">id</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="NOT-NULL"><a href="#NOT-NULL" class="headerlink" title="NOT NULL"></a>NOT NULL</h2><p>如果将一个列定义为not null，将不允许向该列插入null值。建议在重要情况下始终使用not null属性，因为它提供了<br>一个基本验证，确保已经向查询传递了所有必要的值。</p>
+<hr>
+<h2 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h2><p>为列指定null属性时，该列可以保持为空，而不论行中其它列是否已经被填充。记住，null精确的说法是“无”，而不是空字符串或0。</p>
+<hr>
+<h2 id="PRIMARY-KEY"><a href="#PRIMARY-KEY" class="headerlink" title="PRIMARY KEY"></a>PRIMARY KEY</h2><p>primary key属性用于确保指定行的唯一性。指定为主键的列中，值不能重复，也不能为空。为指定为主键的列赋予auto_increment属性<br>是很常见的，因为此列不必与行数据有任何关系，而只是作为一个唯一标识符。主键又分为以下两种：</p>
+<p>(1)单字段主键<br>如果输入到数据库中的每行都已经有不可修改的唯一标识符，一般会使用单字段主键。注意，此主键一旦设置就不能再修改。<br>(2)多字段主键<br>如果记录中任何一个字段都不可能保证唯一性，就可以使用多字段主键。这时，多个字段联合起来确保唯一性。如果出现这种情况，指定一<br>个auto_increment整数作为主键是更好的办法。</p>
+<hr>
+<h2 id="UNIQUE"><a href="#UNIQUE" class="headerlink" title="UNIQUE"></a>UNIQUE</h2><p>被赋予unique属性的列将确保所有值都有不同的值，只是null值可以重复。一般会指定一个列为unique，以确保该列的所有值都不同。例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">email varchar(45) unique</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="ZEROFILL"><a href="#ZEROFILL" class="headerlink" title="ZEROFILL"></a>ZEROFILL</h2><p>zerofill属性可用于任何数值类型，用0填充所有剩余字段空间。例如，无符号int的默认宽度是10；因此，当“零填充”的int值为4时，将<br>表示它为0000000004。例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">orderid int unsigned zerofill not null</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="引用参考"><a href="#引用参考" class="headerlink" title="引用参考"></a>引用参考</h2><ul>
+<li><a href="http://www.jellythink.com/archives/642" target="_blank" rel="external">MySQL数据类型和属性</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/13/Mysql-数据类型的属性/" data-id="cioitaqrs001bg0sesslg7vt7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/属性/">属性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据类型/">数据类型</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Mysql-数据类型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/13/Mysql-数据类型/" class="article-date">
@@ -164,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/Mysql-数据类型/" data-id="ciohd560m0017uz9kz2304930" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/Mysql-数据类型/" data-id="cioitaqrl0011g0sev8cy8sbj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据类型/">数据类型</a></li></ul>
@@ -204,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/Mysql-连接数据库/" data-id="ciohd560v001fuz9k3w06oddg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/Mysql-连接数据库/" data-id="cioitaqru001cg0seeqfyhul6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/login/">login</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -245,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/Git-获取远端分支/" data-id="ciohd55zf0007uz9kn2fy4362" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/Git-获取远端分支/" data-id="cioitaqql0004g0seg5nq1og0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/branch/">branch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/checkout/">checkout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fetch/">fetch</a></li></ul>
@@ -284,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/Git-查询远端分支/" data-id="ciohd55zc0006uz9kx8n4m2yl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/Git-查询远端分支/" data-id="cioitaqqe0001g0semygut5g3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/branch/">branch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/search/">search</a></li></ul>
@@ -331,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/KVC-键值设置编码的行为/" data-id="ciohd5600000nuz9kz54g9rgn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/KVC-键值设置编码的行为/" data-id="cioitaqr6000ng0se6fyvaj17" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KVC/">KVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-c/">Objective-c</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/setValue/">setValue</a></li></ul>
@@ -378,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/KVC-键值访问编码的行为/" data-id="ciohd5603000ouz9kmnve9bl0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/KVC-键值访问编码的行为/" data-id="cioitaqqz000fg0seqd0ll1ov" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KVC/">KVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-c/">Objective-c</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/valueForKey/">valueForKey</a></li></ul>
@@ -426,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/IOS-Key-Value-Code-的基本操作/" data-id="ciohd55zl000buz9kx9jyax77" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/IOS-Key-Value-Code-的基本操作/" data-id="cioitaqqm0006g0sexab0x828" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KVC/">KVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Key-Value/">Key-Value</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
@@ -498,7 +564,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/12/软件下载的网站/" data-id="ciohd561j0027uz9ktsc36u30" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/12/软件下载的网站/" data-id="cioitaqsp0024g0se93ikf6kg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站/">网站</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件下载/">软件下载</a></li></ul>
@@ -541,82 +607,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/08/Linux-文件属性读取/" data-id="ciohd560a000suz9k3zwu19pj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/08/Linux-文件属性读取/" data-id="cioitaqre000tg0se23un86lc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/file-attribute/">file attribute</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stat/">stat</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Linux-目录操作" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/08/Linux-目录操作/" class="article-date">
-  <time datetime="2016-03-08T08:09:48.000Z" itemprop="datePublished">2016-03-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/08/Linux-目录操作/">Linux 目录操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简单说明一下"><a href="#简单说明一下" class="headerlink" title="简单说明一下"></a>简单说明一下</h2><p>  <strong>目录是文件的列表，在Linux下对于目录来说是有系统调用可以使用来操作目录的。</strong></p>
-<p>  <strong>目录的操作需要一个目录文件绝对路径或者当前目录的相对路径。</strong></p>
-<p>  <strong>目录操作的大概过程为：打开目录，读取目录内容放入目录的结构体里面，然后对于结构体的数据进行呈现，最后不需要的时候关闭目录。</strong></p>
-<p>  <strong>打开目录，会得到一个打开的目录文件描述符 <code>DIR</code> (一个无符号整数)，读取目录内容需要目录的文件描述符.</strong></p>
-<p>  <strong><code>DIR</code> 作为 打开目录的文件描述符的宏参数</strong></p>
-<hr>
-<h2 id="open"><a href="#open" class="headerlink" title="open"></a>open</h2><ul>
-<li>函数参考<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DIR *opendir(const char *name); /* name: 目录的绝对路径或者相对路径 */</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>开始打开文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">使用该函数打开目录，返回的目录文件描述符可以用于读取目录内容。</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line">...</span><br><span class="line">DIR *dir_ptr ; /* 目录文件描述符指针 */</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ((dir_ptr = opendir(<span class="string">"/"</span>)) == NULL) &#123; /* 打开目录 */</span><br><span class="line">  fprintf(stderr, <span class="string">"something error: %s"</span>, name);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<hr>
-</li>
-</ul>
-<h2 id="read"><a href="#read" class="headerlink" title="read"></a>read</h2><ul>
-<li><p>函数参考</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int readdir(unsigned int fd, struct old_linux_dirent *dirp,</span><br><span class="line">                 unsigned int count);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>开始读取目录内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">使用该目录文件描述符，读取目录文件的内容，放入结构体指针中。</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line">...</span><br><span class="line">struct dirent *direntp; /* 目录结构体指针 */</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> ((direntp = readdir(dir_ptr)) != NULL) &#123; /* 读取存入结构体 */</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, direntp-&gt;d_name);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p><a href="http://scofieldwyq.github.io/2016/03/08/Linux-%E7%9B%AE%E5%BD%95%E5%86%85%E5%AE%B9%E7%9A%84%E7%BB%93%E6%9E%84/" target="_blank" rel="external">dirent 结构体的内容</a></p>
-</li>
-</ul>
-<h2 id="close"><a href="#close" class="headerlink" title="close"></a>close</h2><ul>
-<li><p>函数参考</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int closedir(DIR *dirp);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关闭目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">使用目录文件描述符关闭目录。</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line">...</span><br><span class="line">closedir(dir_ptr);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h2 id="move-curser"><a href="#move-curser" class="headerlink" title="move curser"></a>move curser</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/08/Linux-目录操作/" data-id="ciohd560e000xuz9klvrunz31" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Directory/">Directory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Directory-operation/">Directory_operation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/closedir/">closedir</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opendir/">opendir</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/readdir/">readdir</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/seekdir/">seekdir</a></li></ul>
 
     </footer>
   </div>
@@ -641,7 +635,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AFNetworking/">AFNetworking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CLLocationManager/">CLLocationManager</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Delegate/">Delegate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory/">Directory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory-operation/">Directory_operation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVC/">KVC</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVO/">KVO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Key-Value/">Key-Value</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Location/">Location</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMediaQuery/">MPMediaQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMusicPlayerController/">MPMusicPlayerController</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Man/">Man</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-c/">Objective-c</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Provisional-Profile/">Provisional Profile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStoryboard/">UIStoryboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VIEW/">VIEW</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio-player/">audio player</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/branch/">branch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/checkout/">checkout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/closedir/">closedir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-line/">command line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dictionary/">dictionary</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dirent/">dirent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fetch/">fetch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-attribute/">file attribute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyPath/">keyPath</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyword-k/">keyword -k</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/local/">local</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/login/">login</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge/">merge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opendir/">opendir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/readdir/">readdir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seekdir/">seekdir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setValue/">setValue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setattr/">setattr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stat/">stat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/str/">str</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/">struct</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/table/">table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/valueForKey/">valueForKey</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片外链/">图片外链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/外部链接/">外部链接</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多值返回/">多值返回</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典/">字典</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/属性/">属性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据类型/">数据类型</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度网盘/">百度网盘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类型判断/">类型判断</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视图/">视图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件下载/">软件下载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/远程仓库/">远程仓库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值编码/">键值编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值观察/">键值观察</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AFNetworking/">AFNetworking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CLLocationManager/">CLLocationManager</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Delegate/">Delegate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory/">Directory</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Directory-operation/">Directory_operation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVC/">KVC</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KVO/">KVO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Key-Value/">Key-Value</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Location/">Location</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMediaQuery/">MPMediaQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MPMusicPlayerController/">MPMusicPlayerController</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Man/">Man</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-c/">Objective-c</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Provisional-Profile/">Provisional Profile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStoryboard/">UIStoryboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VIEW/">VIEW</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio-player/">audio player</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/branch/">branch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/checkout/">checkout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/closedir/">closedir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command-line/">command line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dictionary/">dictionary</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dirent/">dirent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fetch/">fetch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file-attribute/">file attribute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/font/">font</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyPath/">keyPath</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keyword-k/">keyword -k</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/local/">local</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/login/">login</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge/">merge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/office/">office</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opendir/">opendir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/readdir/">readdir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seekdir/">seekdir</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setValue/">setValue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/setattr/">setattr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/size/">size</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stat/">stat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/str/">str</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/">struct</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/table/">table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/valueForKey/">valueForKey</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word/">word</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片外链/">图片外链</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/外部链接/">外部链接</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多值返回/">多值返回</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字典/">字典</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/属性/">属性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据类型/">数据类型</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度网盘/">百度网盘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类型判断/">类型判断</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视图/">视图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件下载/">软件下载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/远程仓库/">远程仓库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值编码/">键值编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键值观察/">键值观察</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -651,7 +645,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/CLLocationManager/" style="font-size: 10px;">CLLocationManager</a> <a href="/tags/Delegate/" style="font-size: 10px;">Delegate</a> <a href="/tags/Directory/" style="font-size: 11.25px;">Directory</a> <a href="/tags/Directory-operation/" style="font-size: 10px;">Directory_operation</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/KVC/" style="font-size: 15px;">KVC</a> <a href="/tags/KVO/" style="font-size: 10px;">KVO</a> <a href="/tags/Key-Value/" style="font-size: 10px;">Key-Value</a> <a href="/tags/Linux/" style="font-size: 16.25px;">Linux</a> <a href="/tags/Location/" style="font-size: 10px;">Location</a> <a href="/tags/MPMediaQuery/" style="font-size: 10px;">MPMediaQuery</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/Mac/" style="font-size: 11.25px;">Mac</a> <a href="/tags/Man/" style="font-size: 10px;">Man</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/Mysql/" style="font-size: 18.75px;">Mysql</a> <a href="/tags/Objective-c/" style="font-size: 11.25px;">Objective-c</a> <a href="/tags/Provisional-Profile/" style="font-size: 10px;">Provisional Profile</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/UIStoryboard/" style="font-size: 10px;">UIStoryboard</a> <a href="/tags/VIEW/" style="font-size: 10px;">VIEW</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/audio-player/" style="font-size: 10px;">audio player</a> <a href="/tags/branch/" style="font-size: 11.25px;">branch</a> <a href="/tags/checkout/" style="font-size: 10px;">checkout</a> <a href="/tags/closedir/" style="font-size: 10px;">closedir</a> <a href="/tags/command-line/" style="font-size: 10px;">command line</a> <a href="/tags/database/" style="font-size: 15px;">database</a> <a href="/tags/dict/" style="font-size: 12.5px;">dict</a> <a href="/tags/dictionary/" style="font-size: 12.5px;">dictionary</a> <a href="/tags/dirent/" style="font-size: 10px;">dirent</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/file-attribute/" style="font-size: 10px;">file attribute</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/install/" style="font-size: 11.25px;">install</a> <a href="/tags/keyPath/" style="font-size: 10px;">keyPath</a> <a href="/tags/keyword-k/" style="font-size: 10px;">keyword -k</a> <a href="/tags/local/" style="font-size: 10px;">local</a> <a href="/tags/login/" style="font-size: 10px;">login</a> <a href="/tags/merge/" style="font-size: 10px;">merge</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/opendir/" style="font-size: 10px;">opendir</a> <a href="/tags/readdir/" style="font-size: 10px;">readdir</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/seekdir/" style="font-size: 10px;">seekdir</a> <a href="/tags/setValue/" style="font-size: 10px;">setValue</a> <a href="/tags/setattr/" style="font-size: 10px;">setattr</a> <a href="/tags/stat/" style="font-size: 11.25px;">stat</a> <a href="/tags/str/" style="font-size: 10px;">str</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/struct/" style="font-size: 11.25px;">struct</a> <a href="/tags/table/" style="font-size: 10px;">table</a> <a href="/tags/valueForKey/" style="font-size: 10px;">valueForKey</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/图片外链/" style="font-size: 10px;">图片外链</a> <a href="/tags/外部链接/" style="font-size: 10px;">外部链接</a> <a href="/tags/多值返回/" style="font-size: 10px;">多值返回</a> <a href="/tags/字典/" style="font-size: 10px;">字典</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/数据库/" style="font-size: 13.75px;">数据库</a> <a href="/tags/数据类型/" style="font-size: 11.25px;">数据类型</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/百度网盘/" style="font-size: 10px;">百度网盘</a> <a href="/tags/类型判断/" style="font-size: 10px;">类型判断</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/软件下载/" style="font-size: 10px;">软件下载</a> <a href="/tags/远程仓库/" style="font-size: 10px;">远程仓库</a> <a href="/tags/键值编码/" style="font-size: 10px;">键值编码</a> <a href="/tags/键值观察/" style="font-size: 10px;">键值观察</a>
+      <a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/CLLocationManager/" style="font-size: 10px;">CLLocationManager</a> <a href="/tags/Delegate/" style="font-size: 10px;">Delegate</a> <a href="/tags/Directory/" style="font-size: 11.25px;">Directory</a> <a href="/tags/Directory-operation/" style="font-size: 10px;">Directory_operation</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/KVC/" style="font-size: 15px;">KVC</a> <a href="/tags/KVO/" style="font-size: 10px;">KVO</a> <a href="/tags/Key-Value/" style="font-size: 10px;">Key-Value</a> <a href="/tags/Linux/" style="font-size: 16.25px;">Linux</a> <a href="/tags/Location/" style="font-size: 10px;">Location</a> <a href="/tags/MPMediaQuery/" style="font-size: 10px;">MPMediaQuery</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/Mac/" style="font-size: 11.25px;">Mac</a> <a href="/tags/Man/" style="font-size: 10px;">Man</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/Mysql/" style="font-size: 18.75px;">Mysql</a> <a href="/tags/Objective-c/" style="font-size: 11.25px;">Objective-c</a> <a href="/tags/Provisional-Profile/" style="font-size: 10px;">Provisional Profile</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/UIStoryboard/" style="font-size: 10px;">UIStoryboard</a> <a href="/tags/VIEW/" style="font-size: 10px;">VIEW</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/audio-player/" style="font-size: 10px;">audio player</a> <a href="/tags/branch/" style="font-size: 11.25px;">branch</a> <a href="/tags/checkout/" style="font-size: 10px;">checkout</a> <a href="/tags/closedir/" style="font-size: 10px;">closedir</a> <a href="/tags/command-line/" style="font-size: 10px;">command line</a> <a href="/tags/database/" style="font-size: 15px;">database</a> <a href="/tags/dict/" style="font-size: 12.5px;">dict</a> <a href="/tags/dictionary/" style="font-size: 12.5px;">dictionary</a> <a href="/tags/dirent/" style="font-size: 10px;">dirent</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/file-attribute/" style="font-size: 10px;">file attribute</a> <a href="/tags/font/" style="font-size: 10px;">font</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/install/" style="font-size: 11.25px;">install</a> <a href="/tags/keyPath/" style="font-size: 10px;">keyPath</a> <a href="/tags/keyword-k/" style="font-size: 10px;">keyword -k</a> <a href="/tags/local/" style="font-size: 10px;">local</a> <a href="/tags/login/" style="font-size: 10px;">login</a> <a href="/tags/merge/" style="font-size: 10px;">merge</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/opendir/" style="font-size: 10px;">opendir</a> <a href="/tags/readdir/" style="font-size: 10px;">readdir</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/seekdir/" style="font-size: 10px;">seekdir</a> <a href="/tags/setValue/" style="font-size: 10px;">setValue</a> <a href="/tags/setattr/" style="font-size: 10px;">setattr</a> <a href="/tags/size/" style="font-size: 10px;">size</a> <a href="/tags/stat/" style="font-size: 11.25px;">stat</a> <a href="/tags/str/" style="font-size: 10px;">str</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/struct/" style="font-size: 11.25px;">struct</a> <a href="/tags/table/" style="font-size: 10px;">table</a> <a href="/tags/valueForKey/" style="font-size: 10px;">valueForKey</a> <a href="/tags/word/" style="font-size: 10px;">word</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/图片外链/" style="font-size: 10px;">图片外链</a> <a href="/tags/外部链接/" style="font-size: 10px;">外部链接</a> <a href="/tags/多值返回/" style="font-size: 10px;">多值返回</a> <a href="/tags/字典/" style="font-size: 10px;">字典</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/数据库/" style="font-size: 13.75px;">数据库</a> <a href="/tags/数据类型/" style="font-size: 11.25px;">数据类型</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/百度网盘/" style="font-size: 10px;">百度网盘</a> <a href="/tags/类型判断/" style="font-size: 10px;">类型判断</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a> <a href="/tags/视图/" style="font-size: 10px;">视图</a> <a href="/tags/软件下载/" style="font-size: 10px;">软件下载</a> <a href="/tags/远程仓库/" style="font-size: 10px;">远程仓库</a> <a href="/tags/键值编码/" style="font-size: 10px;">键值编码</a> <a href="/tags/键值观察/" style="font-size: 10px;">键值观察</a>
     </div>
   </div>
 
@@ -660,7 +654,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">37</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">37</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -671,6 +665,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/05/23/word字体对应的磅值/">word字体对应的磅值</a>
+          </li>
         
           <li>
             <a href="/2016/05/22/IOS删除多余的Provisioning-Profile/">IOS删除多余的Provisioning Profile</a>
@@ -686,10 +684,6 @@
         
           <li>
             <a href="/2016/03/24/Python-字符串转换成字典/">Python 字符串转换成字典</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/24/Python-utf-8编码的16进制字符串转换成对应的文字/">Python utf-8编码的16进制字符串转换成对应的文字</a>
           </li>
         
       </ul>

@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: dictionary | Scofield&#39;s Blog</title>
+  <title>Mysql的mysql.sock文件找不到 | Scofield&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Scofield's Blog">
-<meta property="og:url" content="http://yoursite.com/tags/dictionary/index.html">
+  <meta name="description" content="Why does it happend?当出现 Can&amp;#39;t connect to local MySQL server through socket &amp;#39;/tmp/mysql.sock&amp;#39; (2) 这个错误的时候，意思很明确，要不就是文件不存在，要不就是mysql服务器没启动。
+
+应该首先想到的是 Mysql服务器没启动,为什么？因为这样我们重启就好了。
+接下来的就是确定文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql的mysql.sock文件找不到">
+<meta property="og:url" content="http://yoursite.com/2016/05/23/Mysql的mysql-sock文件找不到/index.html">
 <meta property="og:site_name" content="Scofield's Blog">
-<meta property="og:description">
+<meta property="og:description" content="Why does it happend?当出现 Can&amp;#39;t connect to local MySQL server through socket &amp;#39;/tmp/mysql.sock&amp;#39; (2) 这个错误的时候，意思很明确，要不就是文件不存在，要不就是mysql服务器没启动。
+
+应该首先想到的是 Mysql服务器没启动,为什么？因为这样我们重启就好了。
+接下来的就是确定文件">
+<meta property="og:updated_time" content="2016-05-23T10:25:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Scofield's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Mysql的mysql.sock文件找不到">
+<meta name="twitter:description" content="Why does it happend?当出现 Can&amp;#39;t connect to local MySQL server through socket &amp;#39;/tmp/mysql.sock&amp;#39; (2) 这个错误的时候，意思很明确，要不就是文件不存在，要不就是mysql服务器没启动。
+
+应该首先想到的是 Mysql服务器没启动,为什么？因为这样我们重启就好了。
+接下来的就是确定文件">
   
     <link rel="alternate" href="/atom.xml" title="Scofield&#39;s Blog" type="application/atom+xml">
   
@@ -68,77 +78,76 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/24/Python-字符串转换成字典/" class="archive-article-date">
-  <time datetime="2016-03-24T00:12:20.000Z" itemprop="datePublished">Mar 24</time>
+        <section id="main"><article id="post-Mysql的mysql-sock文件找不到" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/23/Mysql的mysql-sock文件找不到/" class="article-date">
+  <time datetime="2016-05-23T10:02:10.000Z" itemprop="datePublished">2016-05-23</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/24/Python-字符串转换成字典/">Python 字符串转换成字典</a>
+    <h1 class="article-title" itemprop="name">
+      Mysql的mysql.sock文件找不到
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/23/Python-Error-TypeError-string-indices-must-be-integers-not-str/" class="archive-article-date">
-  <time datetime="2016-03-23T14:17:20.000Z" itemprop="datePublished">Mar 23</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/23/Python-Error-TypeError-string-indices-must-be-integers-not-str/">Python Error:TypeError: string indices must be integers, not str</a>
-    </h1>
-  
+        <h2 id="Why-does-it-happend"><a href="#Why-does-it-happend" class="headerlink" title="Why does it happend?"></a>Why does it happend?</h2><p>当出现 <code>Can&#39;t connect to local MySQL server through socket &#39;/tmp/mysql.sock&#39; (2)</code> 这个错误的时候，<br>意思很明确，要不就是文件不存在，要不就是mysql服务器没启动。</p>
+<ol>
+<li>应该首先想到的是 <code>Mysql服务器没启动</code>,为什么？因为这样我们重启就好了。</li>
+<li>接下来的就是确定文件 <code>/tmp/mysql.sock</code> 不存在。</li>
+<li><code>my.cfg</code> 配置里面设置的路径不对（这个就是个人修改的问题了，修回来就好了）。</li>
+</ol>
+<h2 id="How-to-fix-it"><a href="#How-to-fix-it" class="headerlink" title="How to fix it?"></a>How to fix it?</h2><p>面对第一种问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo /usr/local/mysql/support-files/mysql.server start</span><br></pre></td></tr></table></figure></p>
+<p>就解决了</p>
+<p>第二种问题，我们还是按照第一个解决方法去重启，如果出错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR! The server quit without updating PID file</span><br></pre></td></tr></table></figure></p>
+<p>有点小麻烦<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 首先查一查进程</span><br><span class="line">$ ps aux | grep &quot;mysql&quot;</span><br><span class="line">wyq             23105   0.3  0.0  2423356    196 s002  R+    6:20PM   0:00.00 grep --color=auto mysql</span><br><span class="line">_mysql          23063   0.0  0.2  3574676  14804 s000  S     5:58PM   0:00.86 /usr/local/mysql/bin/mysqld --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --plugin-dir=/usr/local/mysql/lib/plugin --user=mysql --log-error=/usr/local/mysql/data/promote.cache-dns.local.err --pid-file=/usr/local/mysql/data/promote.cache-dns.local.pid</span><br><span class="line">root            22947   0.0  0.0  2448728    904 s000  S     5:58PM   0:00.02 /bin/sh /usr/local/mysql/bin/mysqld_safe --datadir=/usr/local/mysql/data --pid-file=/usr/local/mysql/data/promote.cache-dns.local.pid</span><br><span class="line"></span><br><span class="line"># 说明还有一些进程没有杀死</span><br><span class="line">$ sudo kill -9 23105</span><br><span class="line"></span><br><span class="line"># 然后重启吧</span><br></pre></td></tr></table></figure></p>
+<p>第三种呢，把配置文件修改成对应的路径就好了</p>
+<blockquote>
+<p>好了，这样可以解决那个问题了</p>
+</blockquote>
+<h2 id="What-is-more"><a href="#What-is-more" class="headerlink" title="What is more?"></a>What is more?</h2><p>最大的问题是目前我就遇到这样的问题，也需要还有别的问题出现这样的状况</p>
+<h2 id="Reference-link"><a href="#Reference-link" class="headerlink" title="Reference link"></a>Reference link</h2><ul>
+<li><a href="https://ruby-china.org/topics/794" target="_blank" rel="external">mac os 安装 mysql总是出现cannot find mysql.sock</a></li>
+<li><a href="http://blog.knowsky.com/192286.htm" target="_blank" rel="external">找不到mysql.sock，mysql.sock丢失问题解决方法</a></li>
+<li><a href="http://www.bubuko.com/infodetail-1157467.html" target="_blank" rel="external">Mac OS 下 mysql 找不到 mysql.sock 的解决过程</a></li>
+<li><a href="http://stackoverflow.com/questions/25700971/fatal-error-please-read-security-section-of-the-manual-to-find-out-how-to-run" target="_blank" rel="external">Fatal error: Please read “Security” section of the manual to find out how to run mysqld as root</a></li>
+<li><a href="https://iwww.me/240.html" target="_blank" rel="external">MySql启动出现The server quit without updating PID file错误解决过程</a></li>
+<li><a href="http://blog.rekfan.com/articles/186.html" target="_blank" rel="external">[解决方法]MySql提示:The server quit without updating PID file(…)失败</a></li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/23/Python-字典/" class="archive-article-date">
-  <time datetime="2016-03-23T14:14:19.000Z" itemprop="datePublished">Mar 23</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/23/Python-字典/">Python 字典</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/23/Mysql的mysql-sock文件找不到/" data-id="ciojv7gua001ltusep4us7x0o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql-sock/">mysql.sock</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/23/word字体对应的磅值/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">word字体对应的磅值</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
